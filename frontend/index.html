@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>AutoRoute | Command & Control Center</title>
+    <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <link rel="stylesheet" href="style.css?v=12">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <div class="hud-overlay">
+        <header class="hud-header">
+            <div>
+                <h1>AUTO<span class="highlight">ROUTE</span> INTELLIGENCE</h1>
+                <div class="subtitle">KARUR SECTOR // LIVE C2 DASHBOARD</div>
+            </div>
+            <div class="status-indicator">
+                <span class="dot pulse"></span>
+                <span class="status-text" id="core-status">AGENT CORE INTEGRITY [SECURE]</span>
+            </div>
+        </header>
+
+        <!-- Decision Journal (Human-Agent Trust Handoff) -->
+        <div class="journal-panel">
+        <h2>XAI - EXPLAINABLE AI JOURNAL</h2>
+            <div id="decision-journal" class="journal-list">
+                <div class="journal-entry init-entry">
+                    <div class="j-stamp">[INIT] SYSTEM LOG</div>
+                    <div class="j-title">AutoRoute Agent Core Online...</div>
+                    <div class="j-desc">Waiting for operational anomalies and telemetry updates.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="side-panel">
+            <h2>Live Fleet Telemetry</h2>
+            <div id="fleet-list" class="fleet-list"></div>
+        </div>
+
+        <div id="agent-alert-panel" class="small-left-alert" style="display: none;">
+            <div class="alert-box">
+                <div class="alert-header">
+                    <span class="alert-icon">🤖</span>
+                    <span class="alert-title" id="alert-title-text" style="font-size: 0.9rem;">SYSTEM ALERT</span>
+                </div>
+                <div class="alert-body" style="padding: 10px;">
+                    <div class="reasoning-block" style="font-size: 0.75rem;">
+                        <span class="prompt-cursor">></span>
+                        <span id="alert-reasoning"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left Sliding Commander Console -->
+        <div id="commander-console" class="left-sliding-window">
+            <div id="commander-handle" class="left-sliding-handle">MANUAL OVERRIDES</div>
+            <div class="sliding-content">
+                <h3 style="margin-top: 0; color: #00f0ff;">Commander Console</h3>
+                <p style="font-size: 0.8rem; color: #aaa; margin-bottom: 20px;">Force API commands.</p>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <button id="btn-predict" class="cmd-btn predict-btn">Historical Pre-positioning</button>
+                    <button id="btn-jammer" class="cmd-btn ghost-btn">Toggle GPS Jammer</button>
+                    <button id="btn-fault" class="cmd-btn danger-btn">Trigger Breakdown</button>
+                    <button id="btn-event" class="cmd-btn warn-btn">React to Crowd Surge</button>
+                    <button id="btn-rebalance" class="cmd-btn opt-btn">Rebalance Network</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="app.js?v=12"></script>
+</body>
+
+</html>
