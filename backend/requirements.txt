@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+python-socketio
+groq
+mysql-connector-python
+python-dotenv
